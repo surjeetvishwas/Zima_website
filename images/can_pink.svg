@@ -1,0 +1,22 @@
+<svg width="150" height="250" viewBox="0 0 150 250" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="canGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#C2185B; stop-opacity:1" /> <stop offset="50%" style="stop-color:#E91E63; stop-opacity:1" /> <stop offset="100%" style="stop-color:#F06292; stop-opacity:1" /> </linearGradient>
+                 <linearGradient id="topGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#b0bec5; stop-opacity:1" /> <stop offset="100%" style="stop-color:#78909c; stop-opacity:1" /> </linearGradient>
+                 <linearGradient id="bottomGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#78909c; stop-opacity:1" /> <stop offset="100%" style="stop-color:#b0bec5; stop-opacity:1" /> </linearGradient>
+            </defs>
+
+            <rect x="25" y="30" width="100" height="190" rx="10" ry="10" fill="url(#canGradient)" stroke="#880E4F" stroke-width="1"/>
+
+            <ellipse cx="75" cy="30" rx="50" ry="15" fill="url(#topGradient)" stroke="#546e7a" stroke-width="1"/>
+
+            <ellipse cx="75" cy="220" rx="50" ry="15" fill="url(#bottomGradient)" stroke="#546e7a" stroke-width="1"/>
+
+             <g transform="translate(75, 30)"> <path d="M -15 -2 a 5 5 0 0 1 30 0 a 5 5 0 0 1 -30 0" fill="#90a4ae" stroke="#546e7a" stroke-width="0.5"/>
+                <ellipse cx="0" cy="-2" rx="8" ry="3" fill="#cfd8dc"/>
+                <rect x="-5" y="-10" width="10" height="8" rx="2" ry="2" fill="#90a4ae" stroke="#546e7a" stroke-width="0.5"/>
+            </g>
+
+        </svg>
