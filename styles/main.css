@@ -1,4 +1,13 @@
 /* styles/main.css */
+:root {
+    --primary: #00CED1;
+    --secondary: #FF69B4;
+    --accent: #C0C0C0;
+    --dark: #1a1a1a;
+    --light: #ffffff;
+    --shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
 /* ===== BASE STYLES ===== */
 * {
     margin: 0;
@@ -8,22 +17,34 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #ffffff;
+    background: var(--light);
     line-height: 1.6;
+    padding-top: 80px; /* For fixed header */
 }
 
-/* ===== HEADER/NAVIGATION ===== */
+/* ===== ENHANCED HEADER ===== */
 header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
 }
 
 .logo {
     width: 150px;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 nav {
@@ -32,34 +53,67 @@ nav {
 }
 
 nav a {
+    position: relative;
     text-decoration: none;
-    color: #00CED1; /* Icy Teal */
+    color: var(--primary);
     font-weight: 600;
-    transition: color 0.3s;
+    padding: 0.5rem 0;
 }
 
-nav a.active,
-nav a:hover {
-    color: #FF69B4; /* Neon Pink */
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--secondary);
+    transition: width 0.3s ease;
 }
 
-/* ===== HERO SECTION (Homepage) ===== */
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+/* ===== MODERN HERO SECTION ===== */
 .hero {
     text-align: center;
-    padding: 4rem 2rem;
-    background: linear-gradient(45deg, #f8f9fa 0%, #ffffff 100%);
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(0,206,209,0.05) 0%,
+        rgba(255,105,180,0.03) 100%
+    );
+    z-index: -1;
+    animation: gradientShift 15s infinite alternate;
 }
 
 .carousel {
     position: relative;
     max-width: 800px;
     margin: 2rem auto;
+    perspective: 1000px;
 }
 
 .carousel img {
     width: 30%;
-    border-radius: 10px;
+    max-width: 250px;
+    border-radius: 12px;
     display: none;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+    transition: transform 0.5s ease;
 }
 
 .carousel img.active {
@@ -67,26 +121,39 @@ nav a:hover {
     animation: fade 1.5s;
 }
 
+.carousel img:hover {
+    transform: scale(1.03) rotate(2deg);
+}
+
 .hero h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--dark);
     margin: 1rem 0;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: textFlow 6s ease infinite;
 }
 
 .hero p {
     color: #7f8c8d;
     font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
 }
 
-/* ===== MIXOLOGY PAGE ===== */
+/* ===== ENHANCED MIXOLOGY PAGE ===== */
 .mixology {
     padding: 4rem 2rem;
     text-align: center;
+    background: rgba(248, 249, 250, 0.5);
 }
 
 .mixology h2 {
-    color: #2c3e50;
+    color: var(--dark);
     margin-bottom: 2rem;
+    font-size: 2rem;
 }
 
 .ingredients {
@@ -98,70 +165,100 @@ nav a:hover {
 
 .ingredient {
     padding: 1rem 2rem;
-    background: #00CED1;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
     border: none;
-    border-radius: 25px;
+    border-radius: 50px;
     color: white;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.3s, background 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,206,209,0.3);
 }
 
 .ingredient:hover {
-    background: #FF69B4;
     transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255,105,180,0.4);
+    animation: pulse 0.5s ease-in-out;
 }
 
-.recipe-output {
-    margin: 2rem auto;
-    padding: 1.5rem;
-    background: #f8f9fa;
-    border-radius: 10px;
-    max-width: 500px;
-}
-
-/* ===== CONTACT PAGE ===== */
+/* ===== MODERN CONTACT FORM ===== */
 .contact-form {
     max-width: 600px;
     margin: 4rem auto;
-    padding: 2rem;
-    background: #f8f9fa;
-    border-radius: 10px;
+    padding: 2.5rem;
+    background: rgba(248, 249, 250, 0.8);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    box-shadow: var(--shadow);
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 0.8rem;
+    padding: 1rem;
     margin: 0.5rem 0 1.5rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
     font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0,206,209,0.2);
 }
 
 .contact-form button {
     padding: 1rem 2rem;
-    background: #00CED1;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
     border: none;
-    border-radius: 25px;
+    border-radius: 50px;
     color: white;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .contact-form button:hover {
-    background: #FF69B4;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255,105,180,0.4);
+    animation: pulse 0.5s ease-in-out;
 }
 
 /* ===== ANIMATIONS ===== */
 @keyframes fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+@keyframes textFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+    
     header {
         flex-direction: column;
         padding: 1rem;
@@ -169,10 +266,15 @@ nav a:hover {
 
     nav {
         margin-top: 1rem;
+        gap: 1rem;
     }
 
-    .hero h1 {
-        font-size: 2rem;
+    .hero {
+        padding: 5rem 1rem 3rem;
+    }
+
+    .carousel img {
+        width: 50%;
     }
 
     .mixology,
@@ -182,29 +284,12 @@ nav a:hover {
 }
 
 @media (max-width: 480px) {
-    .ingredient {
+    .ingredient,
+    .contact-form button {
         width: 100%;
     }
-}
-
-/* animations.css */
-/* Carousel hover effect */
-.carousel img {
-    transition: transform 0.3s;
-}
-
-.carousel img:hover {
-    transform: scale(1.02);
-}
-
-/* Button pulse animation */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-.ingredient:hover,
-.contact-form button:hover {
-    animation: pulse 0.5s ease-in-out;
+    
+    .carousel img {
+        width: 70%;
+    }
 }

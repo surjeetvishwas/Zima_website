@@ -4,28 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIMA - Retro Refresh, Reimagined</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/animations.css">
 </head>
 <body>
-    <header>
+    <!-- Animated background particles -->
+    <div class="particles"></div>
+
+    <!-- Sticky header with blur effect -->
+    <header class="sticky-header">
         <img src="images/ZIMA-TM-LOGO.webp" alt="Zima Logo" class="logo">
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="mixology.html">Mixology</a>
-            <a href="contact.html">Contact</a>
+        <nav class="nav-links">
+            <a href="index.html" class="active"><span>Home</span></a>
+            <a href="mixology.html"><span>Mixology</span></a>
+            <a href="contact.html"><span>Contact</span></a>
         </nav>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
     </header>
 
+    <!-- Hero section with parallax effect -->
     <section class="hero">
-        <div class="carousel" id="carousel">
-            <img src="images/can_teal.svg" alt="Teal Zima" class="active">
-            <img src="images/can_pink.svg" alt="Pink Zima">
+        <div class="parallax-container">
+            <!-- Animated gradient background -->
+            <div class="gradient-overlay"></div>
+            
+            <!-- 3D Rotating Can Carousel -->
+            <div class="can-carousel">
+                <div class="can-wrapper">
+                    <img src="images/can_teal.svg" class="active" alt="Teal Zima">
+                    <img src="images/can_pink.svg" alt="Pink Zima">
+                </div>
+                <div class="carousel-controls">
+                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Animated text -->
+            <div class="hero-content">
+                <h1 class="animate-text">Retro Refresh, Reimagined</h1>
+                <p class="animate-subtext">A modern twist on the 90s classic</p>
+                <button class="cta-button hover-effect">
+                    <span>Explore Flavors</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
-        <h1>Retro Refresh, Reimagined</h1>
-        <p>A modern twist on the 90s classic.</p>
     </section>
 
     <script src="scripts/carousel.js"></script>
+    <script src="scripts/particles.js"></script>
+    <script src="scripts/animations.js"></script>
 </body>
 </html>
